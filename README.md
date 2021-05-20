@@ -1,7 +1,18 @@
 # MLB_HOF
 Predictor for Major League Baseball Hall of Fame
 
-The Baseball Hall of Fame (HOF) recognizes and honors those who have achieved a level of excellence in the sport as a player, manager, executive or pioneer. The first election for induction into the HOF was held in 1936. The National Baseball Hall of Fame and Museum in Cooperstown, NY opened in 1939. The specific requirements for eligibility and voting process have changed several times in the years since, but currently are:
+The Baseball Hall of Fame (HOF) recognizes and honors those who have achieved a level of excellence in the sport as a player, manager, executive or pioneer. 
+
+Using the career records of eligible players, we will create models that attempt to predict which players will be inducted into the HOF. The models will be scored against the test dataset and the incorrect classifications considered against lists of known borderline/controversial players. The model will also be used to predict HOF induction for players not yet eligible to be included on the ballot. Finally, the model will predict which players would have been inducted if they were not known users of performance enhancing drugs (PEDs).
+
+Each of the notebooks can be executed using the data files included in the repository. For a deeper understanding of the project workflow:
+- The SQL script PlayerSeasonStats.sql extracts relevant data from a MSSQL database containing the Lahman database (http://www.seanlahman.com/baseball-archive/statistics/) plus Wins Above Replacement (WAR) data downloaded from https://www.baseball-reference.com/ and writes to csv files for processing by the notebooks
+- 01 - Data Preparation uses the source data from SQL, identifies missing values, imputes, summarizes seasonal data into career totals and calculates additional features.
+- 02 - EDA explores that career data looking at correlation and examining potential outliers
+- 03 - Models uses different methodologies to model the data for position players/batters and pitchers to predict which players will be inducted based on their career data. There is discussion and consideration of players that are commonly believed to have external influence on their HOF candidacy which is outside the scope of the source data.
+
+Additional background for Baseball Hall of Fame:
+The first election for induction into the HOF was held in 1936. The National Baseball Hall of Fame and Museum in Cooperstown, NY opened in 1939. The specific requirements for eligibility and voting process have changed several times in the years since, but currently are:
 Eligibility
 
     Players must have played in at least 10 seasons
